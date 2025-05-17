@@ -211,7 +211,7 @@ const Contact = () => {
               aria-label="Send me an email at your.email@example.com"
             >
               <FaEnvelope aria-hidden="true" />
-              <span>your.email@example.com</span>
+              <span>camilopavasrios@gmail.com</span>
             </ContactEmail>
             <SocialLinks 
               variants={itemVariants}

@@ -1,9 +1,11 @@
-import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
-import { ReactNode, useEffect } from 'react';
-import { theme } from '../../styles/theme';
-import { FloatingNav } from '../navigation/FloatingNav';
-import { useKeyboardNavigation } from '../../hooks/useKeyboardNavigation';
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
+import { ReactNode, useEffect } from "react";
+import { theme } from "../../styles/theme";
+import { FloatingNav } from "../navigation/FloatingNav";
+import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,7 +15,7 @@ const LayoutWrapper = styled.div`
   @media print {
     background: white !important;
     color: black !important;
-    
+
     * {
       color: black !important;
       text-shadow: none !important;
@@ -40,7 +42,7 @@ const LayoutWrapper = styled.div`
   background: transparent;
 
   &::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -69,13 +71,17 @@ const Header = styled.header`
     display: none;
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -20px;
     left: 0;
     right: 0;
     height: 20px;
-    background: linear-gradient(to bottom, ${theme.colors.glass.background}, transparent);
+    background: linear-gradient(
+      to bottom,
+      ${theme.colors.glass.background},
+      transparent
+    );
   }
 `;
 
@@ -150,34 +156,53 @@ const Footer = styled.footer`
   text-align: center;
   position: relative;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -20px;
     left: 0;
     right: 0;
     height: 20px;
-    background: linear-gradient(to top, ${theme.colors.glass.background}, transparent);
+    background: linear-gradient(
+      to top,
+      ${theme.colors.glass.background},
+      transparent
+    );
+  }
+`;
+
+const LanguageSwitcher = styled.button`
+  background: transparent;
+  border: none;
+  color: ${theme.colors.textLight};
+  font-weight: 500;
+  font-size: 1rem;
+  padding: ${theme.spacing.xs} ${theme.spacing.sm};
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all ${theme.transitions.default};
+
+  &:hover {
+    color: ${theme.colors.light};
+    background-color: rgba(255, 255, 255, 0.1);
   }
 `;
 
 export const Layout = ({ children }: LayoutProps) => {
+  const { t } = useTranslation(); // 👈 importar hook de traducción
   useKeyboardNavigation();
 
   useEffect(() => {
-    // Add keyboard navigation instructions to console
     console.info(
-      'Keyboard Navigation:\n',
-      '- Arrow Up/Down or PageUp/PageDown: Navigate between sections\n',
-      '- Home: Go to top\n',
-      '- End: Go to bottom'
+      "Keyboard Navigation:\n",
+      "- Arrow Up/Down or PageUp/PageDown: Navigate between sections\n",
+      "- Home: Go to top\n",
+      "- End: Go to bottom"
     );
   }, []);
 
   return (
     <LayoutWrapper>
-      <SkipLink href="#main-content">
-        Skip to main content
-      </SkipLink>
+      <SkipLink href="#main-content">{t("nav.skip")}</SkipLink>
 
       <Header role="banner">
         <Nav role="navigation" aria-label="Main navigation">
@@ -189,13 +214,30 @@ export const Layout = ({ children }: LayoutProps) => {
               role="heading"
               aria-level={1}
             >
-              Portfolio
+              {t("portfolio")}
             </Logo>
-            <NavLinks role="list">
-              <a href="#about" role="listitem" aria-label="About section">About</a>
-              <a href="#projects" role="listitem" aria-label="Projects section">Projects</a>
-              <a href="#skills" role="listitem" aria-label="Skills section">Skills</a>
-              <a href="#contact" role="listitem" aria-label="Contact section">Contact</a>
+            <NavLinks role="navigation">
+              <a href="#about" aria-label={t("nav.about")}>
+                {t("nav.about")}
+              </a>
+              <a href="#projects" aria-label={t("nav.projects")}>
+                {t("nav.projects")}
+              </a>
+              <a href="#skills" aria-label={t("nav.skills")}>
+                {t("nav.skills")}
+              </a>
+              <a href="#contact" aria-label={t("nav.contact")}>
+                {t("nav.contact")}
+              </a>
+              <LanguageSwitcher
+                onClick={() => {
+                  const newLang = i18n.language === "en" ? "es" : "en";
+                  i18n.changeLanguage(newLang);
+                }}
+                aria-label={t("nav.language")}
+              >
+                {i18n.language === "en" ? "ES" : "EN"}
+              </LanguageSwitcher>
             </NavLinks>
           </div>
         </Nav>
@@ -206,7 +248,10 @@ export const Layout = ({ children }: LayoutProps) => {
       <FloatingNav />
       <Footer role="contentinfo">
         <div className="container">
-          <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Cristian Camilo Pavas Rios.{" "}
+            {t("footer.copyright")}
+          </p>
         </div>
       </Footer>
     </LayoutWrapper>

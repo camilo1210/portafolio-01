@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Hi, I'm Camilo Pavas",
+    "subtitle": "Software developer",
+    "description": "Technology in Software Development in training, currently studying fifth semester. I have skills in the development of software, cybersecurity, web development and algorithms design. With experience working with programming languages ​​such as Java (using Netbeans), HTML, CSS, JavaScript and Python. Management the Microsoft Office package in its 2010, 2016 and 2019 versions (Word, PowerPoint, Excel and Publisher).."
+  },
+
+   "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+
+  "featuredProjects": "Featured Projects",
+  "skillsExpertise": "Skills & Expertise",
+  "getInTouch": "Get In Touch",
+  "footer": "All rights reserved."
+}
+
+

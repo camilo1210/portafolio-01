@@ -1,0 +1,17 @@
+{
+    "hero": {
+        "title": "Hola, soy Camilo Pavas",
+        "subtitle": "Desarrollador de Software",
+        "description": "Tecnologo en Desarrollo de Software en formación ,actualmente cursando quinto semestre. Poseo habilidades en el desarrollo de software, ciberseguridad, desarrollo web y diseño de algoritmos. Con  experiencia trabajando con lenguajes de programación como Java (usando NetBeans), HTML, CSS, JavaScript y Python.Además, cuento con conocimientos en redes, instalación de sistemas operativos y mantenimiento de hardware. Manejo el paquete de Microsoft Office en sus versiones 2010, 2016 y 2019 (Word, PowerPoint, Excel y Publisher)."
+    },
+    "nav": {
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "skills": "Habilidades",
+        "contact": "Contacto"
+    },
+    "featuredProjects": "Proyectos Destacados",
+    "skillsExpertise": "Habilidades y Experiencia",
+    "getInTouch": "Contáctame",
+    "footer": "Todos los derechos reservados."
+}

@@ -5,6 +5,8 @@ import { lazy, Suspense } from 'react';
 const FaGithub = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaGithub })));
 const FaLinkedin = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaLinkedin })));
 const FaEnvelope = lazy(() => import('react-icons/fa').then(mod => ({ default: mod.FaEnvelope })));
+import { useTranslation } from 'react-i18next';
+
 
 const HeroSection = styled.section`
   min-height: calc(100vh - 4.5rem);
@@ -121,20 +123,20 @@ const SocialLinks = styled.div`
 `;
 
 export const Hero = () => {
+  const { t } = useTranslation();
   return (
     <HeroSection id="hero" role="region" aria-label="Introduction">
       <div className="container">
         <HeroContent>
           <div>
             <Title role="heading" aria-level={2}>
-              Hi, I'm [Your Name]
+              {t('hero.title', { name: 'Cristian Camilo Pavas Rios' })}
             </Title>
             <Subtitle role="heading" aria-level={3}>
-              Full Stack Developer
+              {t('hero.subtitle', { profession: 'Full Stack Developer' })}
             </Subtitle>
             <Description role="paragraph">
-              I create elegant solutions to complex problems, specializing in modern web development
-              with a focus on user experience and clean code.
+              {t('hero.description', { description: 'I am a passionate developer with a focus on creating beautiful and functional web applications.' })}
             </Description>
             <SocialLinks role="list" aria-label="Social media links">
               <a 
