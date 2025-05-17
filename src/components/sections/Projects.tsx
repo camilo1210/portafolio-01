@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-
+import React from 'react';
 
 const ProjectsSection = styled.section`
   min-height: 100vh;
@@ -23,7 +23,7 @@ const SectionTitle = styled(motion.h2)`
   margin-bottom: calc(${theme.spacing.xl} * 1.5);
   color: ${theme.colors.textLight};
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -160,14 +160,14 @@ const ProjectLinks = styled.div`
   margin-top: auto;
   padding-top: ${theme.spacing.md};
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  
+
   a {
     color: ${theme.colors.accent};
     font-size: clamp(1rem, 2vw, 1.2rem);
     transition: all ${theme.transitions.default};
     padding: ${theme.spacing.xs};
     border-radius: 4px;
-    
+
     &:hover {
       color: ${theme.colors.light};
       background: ${theme.colors.glass.card};
@@ -180,20 +180,20 @@ const projects = [
   {
     id: 1,
     title: "PI Proyect",
-    description: "A full-stack web application with real-time features and modern UI/UX design.",
-    image: "https://via.placeholder.com/400x200",
-    techStack: ["React", "Node.js", "MongoDB", "Socket.IO"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    description: "Este proyecto es una experiencia interactiva desarrollada con React, Three.js y @react-three/fiber, que busca explicar de manera visual y educativa algunas enfermedades del corazón. A través de modelos 3D realistas e información clara..",
+    image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fsr0hy4omyh9hbyc9r1mh.png/400x200",
+    techStack: ["React", "Vite", "3D", "UX/UI"],
+    githubUrl: "https://github.com/camilo1210/PI-Proyect",
+    liveUrl: "https://pi-proyect.vercel.app/",
   },
   {
     id: 2,
-    title: "Project Two",
-    description: "Mobile-first e-commerce platform with seamless payment integration.",
-    image: "https://via.placeholder.com/400x200",
-    techStack: ["Next.js", "TypeScript", "Stripe", "Tailwind"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    title: "Django Proyect",
+    description: "Este proyecto consiste en el desarrollo de un sistema de inventario para una panadería llamada Pan y Arte. El objetivo principal es llevar un control eficiente de las materias primas utilizadas en la producción, facilitando el registro, la actualización y el seguimiento del inventario en tiempo real..",
+    image: "https://impulso06.com/wp-content/uploads/2023/11/Python-y-Django-Herramientas-esenciales-para-el-desarrollo-web-moderno.png/400x200",
+    techStack: ["HTML5", "Django", "Python", "My SQL"],
+    githubUrl: "https://github.com/camilo1210/ProyectoDjango",
+    liveUrl: "",
   },
 ];
 
@@ -219,6 +219,15 @@ const Projects = () => {
     },
   };
 
+  const handleLiveClick = (event: React.MouseEvent<HTMLAnchorElement>, liveUrl: string) => {
+    event.preventDefault(); // Evita la navegación inmediata
+    if (!liveUrl) {
+      alert("Este proyecto se implementó de manera local.");
+    } else {
+      window.open(liveUrl, '_blank', 'noopener,noreferrer'); // Abre la URL si existe
+    }
+  };
+
   return (
     <ProjectsSection id="projects" role="region" aria-label="Featured Projects">
       <div className="container">
@@ -239,49 +248,51 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <ProjectGrid role="list">
-          {projects.map((project) => (
-            <ProjectCard 
-              key={project.id} 
-              variants={itemVariants}
-              role="listitem"
-              aria-labelledby={`project-title-${project.id}`}
-            >
-              <ProjectImage 
-                imageUrl={project.image} 
-                role="img" 
-                aria-label={`Screenshot of ${project.title}`} 
-              />
-              <ProjectContent>
-                <ProjectTitle id={`project-title-${project.id}`}>{project.title}</ProjectTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
-                <TechStack role="list" aria-label={`Technologies used in ${project.title}`}>
-                  {project.techStack.map((tech) => (
-                    <TechTag key={tech} role="listitem">{tech}</TechTag>
-                  ))}
-                </TechStack>
-                <ProjectLinks>
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label={`View ${project.title} source code on GitHub`}
-                  >
-                    <FaGithub aria-hidden="true" />
-                    <span className="sr-only">GitHub repository</span>
-                  </a>
-                  <a 
-                    href={project.liveUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${project.title} live site`}
-                  >
-                    <FaExternalLinkAlt aria-hidden="true" />
-                    <span className="sr-only">Live site</span>
-                  </a>
-                </ProjectLinks>
-              </ProjectContent>
-            </ProjectCard>
-          ))}
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                variants={itemVariants}
+                role="listitem"
+                aria-labelledby={`project-title-${project.id}`}
+              >
+                <ProjectImage
+                  imageUrl={project.image}
+                  role="img"
+                  aria-label={`Screenshot of ${project.title}`}
+                />
+                <ProjectContent>
+                  <ProjectTitle id={`project-title-${project.id}`}>{project.title}</ProjectTitle>
+                  <ProjectDescription>{project.description}</ProjectDescription>
+                  <TechStack role="list" aria-label={`Technologies used in ${project.title}`}>
+                    {project.techStack.map((tech) => (
+                      <TechTag key={tech} role="listitem">{tech}</TechTag>
+                    ))}
+                  </TechStack>
+                  <ProjectLinks>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${project.title} source code on GitHub`}
+                    >
+                      <FaGithub aria-hidden="true" />
+                      <span className="sr-only">GitHub repository</span>
+                    </a>
+                    <a
+                      href={project.liveUrl || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={project.liveUrl ? `Visit ${project.title} live site` : `Este proyecto se implementó de manera local`}
+                      onClick={(event) => handleLiveClick(event, project.liveUrl)}
+                      style={{ pointerEvents: !project.liveUrl ? 'auto' : undefined }}
+                    >
+                      <FaExternalLinkAlt aria-hidden="true" />
+                      <span className="sr-only">{project.liveUrl ? 'Live site' : 'Implementación local'}</span>
+                    </a>
+                  </ProjectLinks>
+                </ProjectContent>
+              </ProjectCard>
+            ))}
           </ProjectGrid>
         </motion.div>
       </div>
