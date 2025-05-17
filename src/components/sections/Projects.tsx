@@ -179,7 +179,7 @@ const ProjectLinks = styled.div`
 const projects = [
   {
     id: 1,
-    title: "Project One",
+    title: "PI Proyect",
     description: "A full-stack web application with real-time features and modern UI/UX design.",
     image: "https://via.placeholder.com/400x200",
     techStack: ["React", "Node.js", "MongoDB", "Socket.IO"],

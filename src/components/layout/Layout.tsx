@@ -11,6 +11,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+
 const LayoutWrapper = styled.div`
   @media print {
     background: white !important;
