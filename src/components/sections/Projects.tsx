@@ -181,7 +181,7 @@ const projects = [
     id: 1,
     title: "PI Proyect",
     description: "Este proyecto es una experiencia interactiva desarrollada con React, Three.js y @react-three/fiber, que busca explicar de manera visual y educativa algunas enfermedades del corazón. A través de modelos 3D realistas e información clara..",
-    image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fsr0hy4omyh9hbyc9r1mh.png/400x200",
+    image: "/public/Images/Vite.png/400x200",
     techStack: ["React", "Vite", "3D", "UX/UI"],
     githubUrl: "https://github.com/camilo1210/PI-Proyect",
     liveUrl: "https://pi-proyect.vercel.app/",
@@ -195,6 +195,26 @@ const projects = [
     githubUrl: "https://github.com/camilo1210/ProyectoDjango",
     liveUrl: "",
   },
+
+  {
+    id: 3,
+    title: "Proyecto Estadistica",
+    description: "Este proyecto consiste en el desarrollo de un analisis estadistico sobre las ganacias y las perdidas sobre la panaderia Pan y Arte, haciendo su analisis en excel ademas de un pequeño codigo en Python mostrando sus estadistica.",
+    image: "https://impulso06.com/wp-content/uploads/2023/11/Python-y-Django-Herramientas-esenciales-para-el-desarrollo-web-moderno.png/400x200",
+    techStack: ["Excel", "Analisis De Datos", "Python",],
+    githubUrl: "https://github.com/camilo1210/ProyectoDjango",
+    liveUrl: "",
+  },
+{
+    id: 4 ,
+    title: "Sistema Bancario Simulacion",
+    description: "Este sistema simula el funcionamiento básico de un banco, permitiendo al usuario realizar acciones como crear cuentas, consultar información, realizar operaciones financieras y gestionar su cuenta. El programa está diseñado con el paradigma de programación orientada a objetos (POO), utilizando clases que encapsulan comportamientos específicos del sistema bancario.",
+    image: "https://impulso06.com/wp-content/uploads/2023/11/Python-y-Django-Herramientas-esenciales-para-el-desarrollo-web-moderno.png/400x200",
+    techStack: ["POO", "C++", "Simulación",],
+    githubUrl: "https://github.com/camilo1210/ProyectoDjango",
+    liveUrl: "",
+  },
+
 ];
 
 const Projects = () => {
